@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "179092138698",
+    "firebase_url": "https://buildtrotter.firebaseio.com",
+    "project_id": "buildtrotter",
+    "storage_bucket": "buildtrotter.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:179092138698:android:1a727e795d5b47382ca233",
+        "android_client_info": {
+          "package_name": "com.buildtrotter"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "179092138698-qobbmis0a4sdckcllu0rchnd9ebs0gft.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBD6IyaB0Y49zOY8TMVSbm8xsWSZ1Y5L5c"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "179092138698-qobbmis0a4sdckcllu0rchnd9ebs0gft.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "179092138698-2h4ftvp18l3shmvnst7u7563v5vkp5f2.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "org.reactjs.native.example.Buildtrotter"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
