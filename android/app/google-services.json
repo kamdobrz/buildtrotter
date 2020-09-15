@@ -15,6 +15,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "179092138698-2dqer3idus2kv4te5aofm53g4hutkcr9.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.buildtrotter",
+            "certificate_hash": "5e8f16062ea3cd2c4a0d547876baa6f38cabf625"
+          }
+        },
+        {
           "client_id": "179092138698-qobbmis0a4sdckcllu0rchnd9ebs0gft.apps.googleusercontent.com",
           "client_type": 3
         }

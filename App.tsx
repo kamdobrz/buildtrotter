@@ -1,28 +1,24 @@
-import React from 'react';
-import {Button, SafeAreaView, StatusBar, View} from 'react-native';
-import analytics from '@react-native-firebase/analytics';
+import React, {Component, ReactElement} from 'react';
+import {SafeAreaView, StatusBar, View} from 'react-native';
+import appSetup from './app-setup';
+import LoginComponent from './src/components/login/login.component';
 
-const App = () => {
-    return (
-        <>
-            <StatusBar barStyle={'dark-content'} />
-            <SafeAreaView>
-                <View>
-                    <Button
-                        title={'Add To Basket'}
-                        onPress={() =>
-                            analytics().logEvent('basket', {
-                                id: 3745092,
-                                item: 'mens grey t-shirt',
-                                description: ['round neck', 'long sleeved'],
-                                size: 'L'
-                            })
-                        }
-                    />
-                </View>
-            </SafeAreaView>
-        </>
-    );
-};
+export default class App extends Component {
+    public constructor(props) {
+        super(props);
+        appSetup()
+    }
 
-export default App;
+    public render(): ReactElement {
+        return (
+            <>
+                <StatusBar barStyle={'dark-content'}/>
+                <SafeAreaView>
+                    <View>
+                        <LoginComponent />
+                    </View>
+                </SafeAreaView>
+            </>
+        );
+    }
+}
