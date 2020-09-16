@@ -37,7 +37,7 @@ export class AuthService {
 
     public static async createUser(): Promise<void> {
         try {
-            await auth().createUserWithEmailAndPassword('jane.doe@example.com', 'SuperSecretPassword!');
+            await auth().createUserWithEmailAndPassword('kamil.dobrzynski@neoteric.eu', 'SuperSecretPassword!');
             console.log('User account created & signed in!');
         } catch(e) {
             if (e.code === 'auth/email-already-in-use') {
@@ -52,10 +52,20 @@ export class AuthService {
         }
     }
 
-    public static logInWithCredentials = (email: string, password: string): () => Promise<void> =>
+    public static logInWithCredentials = (email: string, password: string): () => void =>
         async (): Promise<void> => {
             auth().signInWithEmailAndPassword(email, password);
         };
+
+    public static resetPassword = (email: string): () => void =>
+        async (): Promise<void> =>{
+        try {
+            auth().sendPasswordResetEmail(email);
+            console.log('sent email')
+        } catch (e) {
+            console.log(e)
+        }
+    };
 
     public static async logOut(): Promise<void> {
         try {
