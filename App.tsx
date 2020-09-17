@@ -1,10 +1,13 @@
 import React, {Component, ReactElement} from 'react';
-import {SafeAreaView, StatusBar, View} from 'react-native';
 import appSetup from './app-setup';
-import LoginComponent from './src/components/login/login.component';
-import { Provider } from 'react-redux';
+import {Provider} from 'react-redux';
 import store from './src/store/configureStore';
-import Avatar from './src/components/avatar/avatar.component';
+import {createStackNavigator} from '@react-navigation/stack';
+import {NavigationContainer} from '@react-navigation/native';
+import HomeScreen from './src/screens/home/home.component';
+import {StatusBar} from 'react-native';
+
+const Root = createStackNavigator()
 
 export default class App extends Component {
     public constructor(props) {
@@ -12,17 +15,18 @@ export default class App extends Component {
         appSetup()
     }
 
+
     public render(): ReactElement {
-        const user = store.getState().user.user;
-        console.log('app', user);
         return (
             <Provider store={store}>
                 <StatusBar barStyle={'dark-content'}/>
-                <SafeAreaView>
-                    <View>
-                        <LoginComponent />
-                    </View>
-                </SafeAreaView>
+                    <NavigationContainer>
+                        <Root.Navigator
+                            headerMode={'none'}
+                            initialRouteName='Home'>
+                            <Root.Screen name='Home' component={HomeScreen} />
+                        </Root.Navigator>
+                    </NavigationContainer>
             </Provider>
         );
     }

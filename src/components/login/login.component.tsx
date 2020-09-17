@@ -2,14 +2,15 @@ import React, {ReactElement} from 'react';
 import {AuthService} from '../../../_services/auth.service';
 import {Button, Text, View} from 'react-native';
 import Link from '../link/link.component';
+import {styles} from './login.styles';
 
-const LoginComponent = (): ReactElement => {
-    return <View>
+const LoginComponent = (): ReactElement =>
+    <View style={styles.container}>
         <Button
             title={'Log in'}
             onPress={AuthService.logInWithCredentials('kamil.dobrzynski@neoteric.eu', 'SuperSecretPassword!')} />
             <Link onPress={AuthService.resetPassword('kamil.dobrzynski@neoteric.eu')}>
-        <View style={{alignItems: 'center'}}>
+        <View>
             <Text>Forgot password?</Text>
         </View>
         </Link>
@@ -21,15 +22,5 @@ const LoginComponent = (): ReactElement => {
             onPress={AuthService.signInGoogle}
         />
     </View>;
-    //
-    // return (
-    //     <View>
-    //         <Text>Welcome {user?.email}</Text>
-    //         <Button
-    //             title={'Log out'}
-    //             onPress={AuthService.logOut} />
-    //     </View>
-    // );
-};
 
 export default LoginComponent;
