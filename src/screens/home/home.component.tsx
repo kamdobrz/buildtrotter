@@ -9,7 +9,9 @@ import {styles} from './home.styles';
 
 const HomeScreen = ({user}: {user: UserFirebase}): ReactElement =>
     <SafeAreaView style={styles.container}>
-        {user?.email && <View style={styles.avatarWrapper}><Avatar user={user}/></View>}
+        {user?.email && <View style={styles.avatarWrapper}>
+            <Avatar user={user}/>
+        </View>}
         {!user?.email && <LoginComponent/>}
     </SafeAreaView>;
 

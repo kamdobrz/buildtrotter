@@ -12,7 +12,6 @@ const appSetup = (): void => {
         webClientId: Config.GOOGLE_WEB_CLIENT_ID
     });
     const onAuthStateChanged = (user: UserFirebase) => {
-        console.log('onAuthStateChanged', user);
         store.dispatch(setUser(user));
     };
 
