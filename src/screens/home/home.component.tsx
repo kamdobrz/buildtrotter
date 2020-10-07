@@ -4,16 +4,22 @@ import Avatar from '../../components/avatar/avatar.component';
 import LoginComponent from '../../components/login/login.component';
 import {connect} from 'react-redux';
 import {AppState} from '../../store/configureStore';
-import {UserFirebase} from '../../_interfaces/user.interface';
 import {styles} from './home.styles';
+import {HomeProps} from './home.interface';
+import VideosScreen from '../videos/videos.component';
 
-const HomeScreen = ({user}: {user: UserFirebase}): ReactElement =>
-    <SafeAreaView style={styles.container}>
-        {user?.email && <View style={styles.avatarWrapper}>
-            <Avatar user={user}/>
-        </View>}
-        {!user?.email && <LoginComponent/>}
-    </SafeAreaView>;
+class HomeScreen extends React.Component<HomeProps> {
+    public render(): ReactElement {
+        const {user} = this.props;
+        return <SafeAreaView style={styles.container}>
+            {user?.email && <View style={styles.avatarWrapper}>
+                <Avatar user={user}/>
+            </View>}
+            {!user?.email && <LoginComponent/>}
+            <VideosScreen/>
+        </SafeAreaView>;
+    }
+};
 
 const mapStateToProps = ({user}: AppState) => ({
     user: user.user
