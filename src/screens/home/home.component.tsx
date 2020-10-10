@@ -6,13 +6,48 @@ import {connect} from 'react-redux';
 import {AppState} from '../../store/configureStore';
 import {UserFirebase} from '../../_interfaces/user.interface';
 import {styles} from './home.styles';
-
+import VideoStack from '../video-stack/video-stack.component';
+const videos = [
+    {
+        id: 1,
+        img: require('../../../assets/photo1.jpg')
+    },
+    {
+        id: 2,
+        img: require('../../../assets/photo2.jpg')
+    },
+    {
+        id: 3,
+            img: require('../../../assets/photo3.jpg')
+    },
+    {
+        id: 4,
+            img: require('../../../assets/photo4.jpg')
+    },
+    {
+        id: 5,
+        img: require('../../../assets/photo1.jpg')
+    },
+    {
+        id: 6,
+        img: require('../../../assets/photo2.jpg')
+    },
+    {
+        id: 7,
+            img: require('../../../assets/photo3.jpg')
+    },
+    {
+        id: 8,
+            img: require('../../../assets/photo4.jpg')
+    },
+];
 const HomeScreen = ({user}: {user: UserFirebase}): ReactElement =>
     <SafeAreaView style={styles.container}>
         {user?.email && <View style={styles.avatarWrapper}>
             <Avatar user={user}/>
         </View>}
         {!user?.email && <LoginComponent/>}
+        <VideoStack videos={videos}/>
     </SafeAreaView>;
 
 const mapStateToProps = ({user}: AppState) => ({
