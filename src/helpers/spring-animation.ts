@@ -12,8 +12,8 @@ export const springAnimation = (clock: Clock, value: Adaptable, dest: AnimatedNo
         mass: 1,
         stiffness: 100,
         overshootClamping: false,
-        restSpeedThreshold: 1,
-        restDisplacementThreshold: 0.5,
+        restSpeedThreshold: 1000,
+        restDisplacementThreshold: 100,
         toValue: new Value(0),
     };
 
