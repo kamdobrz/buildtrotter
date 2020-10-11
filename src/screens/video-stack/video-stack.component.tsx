@@ -42,7 +42,13 @@ class VideoStack extends Component<VideoStackProps, VideoStackState> {
         this.init();
     }
 
-    public onSwiped = (): void => {
+    public onSwiped = ([x]: number[]): void => {
+        if (x > 0) {
+            console.log('liked!')
+        } else {
+            console.log('disliked!')
+        }
+
         const {videos: [lastVideo, ...videos]} = this.state;
         this.setState({videos}, this.init);
     };
