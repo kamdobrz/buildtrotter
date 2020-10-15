@@ -43,14 +43,17 @@ const videos = [
     },
 ];
 const HomeScreen = ({user}: {user: UserFirebase}): ReactElement =>
-    <SafeAreaView style={styles.container}>
-        {user?.email && <View style={styles.avatarWrapper}>
-            <Avatar user={user}/>
-        </View>}
-        {!user?.email && <LoginComponent/>}
-        <VideoStack videos={videos}/>
-        <Navbar />
-    </SafeAreaView>;
+    <React.Fragment>
+        <SafeAreaView/>
+        <View style={styles.container}>
+            {user?.email && <View style={styles.avatarWrapper}>
+                <Avatar user={user}/>
+            </View>}
+            {!user?.email && <LoginComponent/>}
+            <VideoStack videos={videos}/>
+            <Navbar />
+        </View>
+    </React.Fragment>;
 
 const mapStateToProps = ({user}: AppState) => ({
     user: user.user

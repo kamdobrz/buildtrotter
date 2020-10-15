@@ -16,7 +16,7 @@ const navbarItems: NavbarItemInterface[] = [
     {
         color: 'black',
         name: 'movie-open',
-        size: 40
+        size: 38
     },
     {
         color: 'black',
