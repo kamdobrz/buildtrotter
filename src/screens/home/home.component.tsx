@@ -8,6 +8,7 @@ import {UserFirebase} from '../../_interfaces/user.interface';
 import {styles} from './home.styles';
 import VideoStack from '../video-stack/video-stack.component';
 import Navbar from '../../components/navbar/navbar.component'
+
 const videos = [
     {
         id: 1,
@@ -42,8 +43,8 @@ const videos = [
             img: require('../../../assets/photo4.jpg')
     },
 ];
-const HomeScreen = ({user}: {user: UserFirebase}): ReactElement =>
-    <React.Fragment>
+const HomeScreen = ({user}: {user: UserFirebase}): ReactElement => {
+    return <React.Fragment>
         <SafeAreaView/>
         <View style={styles.container}>
             {user?.email && <View style={styles.avatarWrapper}>
@@ -51,9 +52,10 @@ const HomeScreen = ({user}: {user: UserFirebase}): ReactElement =>
             </View>}
             {!user?.email && <LoginComponent/>}
             <VideoStack videos={videos}/>
-            <Navbar />
+            <Navbar/>
         </View>
     </React.Fragment>;
+};
 
 const mapStateToProps = ({user}: AppState) => ({
     user: user.user

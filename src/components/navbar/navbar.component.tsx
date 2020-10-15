@@ -1,48 +1,56 @@
 import React, {ReactElement} from 'react';
 import {TouchableOpacity, View} from 'react-native';
-import {connect} from 'react-redux';
-import {AppState} from '../../store/configureStore';
-import {UserFirebase} from '../../_interfaces/user.interface';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import {styles} from './navbar.styles';
+import {NavbarItems} from '../../const/navbar-items.const';
 
-interface NavbarItemInterface {
-    color: string;
-    name: string;
-    size: number;
-}
+const Navbar = ({state, descriptors, navigation}) => {
+    if (!state || descriptors[state?.routes[state.index].key].options.tabBarVisible === false) {
+        return null;
+    }
 
-const navbarItems: NavbarItemInterface[] = [
-    {
-        color: 'black',
-        name: 'movie-open',
-        size: 38
-    },
-    {
-        color: 'black',
-        name: 'heart',
-        size: 42
-    },
-    {
-        color: 'black',
-        name: 'account-multiple',
-        size: 48
-    },
-];
-
-const Navbar = ({user}: {user: UserFirebase}): ReactElement =>
+    return (
         <View style={styles.container}>
-            {navbarItems.map(({color, name, size}: NavbarItemInterface): ReactElement =>
-                <TouchableOpacity
-                activeOpacity={.7}
-                style={styles.item}
-                key={name}>
-                    <Icon name={name} size={size} color={color} />
-                </TouchableOpacity> )}
-        </View>;
+            {state.routes.map((route, index): ReactElement => {
+                const {name, size, color} = NavbarItems[index];
+                const {options} = descriptors[route.key];
+                const isFocused = state.index === index;
 
-const mapStateToProps = ({user}: AppState) => ({
-    user: user.user
-});
+                const onPress = (): void => {
+                    const event = navigation.emit({
+                        type: 'tabPress',
+                        target: route.key,
+                        canPreventDefault: true,
+                    });
 
-export default connect(mapStateToProps)(Navbar);
+                    if (!isFocused && !event.defaultPrevented) {
+                        navigation.navigate(route.name);
+                    }
+                };
+
+                const onLongPress = (): void => {
+                    navigation.emit({
+                        type: 'tabLongPress',
+                        target: route.key
+                    });
+                };
+
+                return (
+                    <TouchableOpacity
+                        accessibilityRole={'button'}
+                        accessibilityState={isFocused ? {selected: true} : {}}
+                        accessibilityLabel={options.tabBarAccessibilityLabel}
+                        onPress={onPress}
+                        onLongPress={onLongPress}
+                        style={styles.item}
+                        key={name}
+                    >
+                        <Icon name={name} size={size} color={isFocused ? '#673ab7' : color}/>
+                    </TouchableOpacity>
+                );
+            })}
+        </View>
+    );
+};
+
+export default Navbar;
