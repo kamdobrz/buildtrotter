@@ -5,7 +5,7 @@ import Animated, {AnimatedNode, Clock, concat, interpolate} from 'react-native-r
 import {VideoStackProps, VideoStackState} from './video-stack.interface';
 import {springAnimation} from '../../helpers/spring-animation';
 import {toRadians} from '../../helpers/radians';
-import {VideoItem} from '../video-item/video-item.component';
+import VideoItem from '../video-item/video-item.component';
 import {styles} from './video-stack.styles';
 import {heightDimension, widthDimension} from '../../helpers/dimensions';
 
@@ -72,7 +72,6 @@ class VideoStack extends Component<VideoStackProps, VideoStackState> {
             cond(greaterThan(finalTranslateX, translationThreshold), rotatedWidth, 0),
         );
 
-        // TODO: handle case where the user drags the card again before the spring animation finished
         this.translateY = cond(
             eq(gestureState, State.END),
             [
@@ -92,7 +91,7 @@ class VideoStack extends Component<VideoStackProps, VideoStackState> {
                 ]),
                 translationX
             ],
-            cond(eq(gestureState, State.BEGAN), [stopClock(clockX), translationX], translationX)
+        cond(eq(gestureState, State.BEGAN), [stopClock(clockX), translationX], translationX)
         );
     };
 
@@ -111,19 +110,31 @@ class VideoStack extends Component<VideoStackProps, VideoStackState> {
                 {rotateZ}
             ]
         };
+        const likeOpacity = {opacity: interpolate(translateX, {
+            inputRange: [0, width / 4],
+            outputRange: [0, 1],
+        })};
+        const dislikeOpacity = {opacity: interpolate(translateX, {
+            inputRange: [-width / 4, 0],
+            outputRange: [1, 0],
+        })};
 
         return <View style={styles.container}>
             {restVideos.reverse().map((video): ReactElement =>
-                <VideoItem {...video} />
+                <VideoItem {...video} key={video.id}/>
             )}
             <PanGestureHandler
                 minDist={10}
                 failOffsetY={[-10, 10]}
                 onHandlerStateChange={onGestureStateChange}
                 {...{onGestureEvent: onGestureStateChange}}>
-                {lastVideo && <Animated.View style={[styles.frontItem, transformStyles]}>
-                <VideoItem {...lastVideo} />
-                </Animated.View>}
+                    {lastVideo ? <Animated.View style={[styles.frontItem, transformStyles]}>
+                        <VideoItem
+                            {...lastVideo}
+                            likeOpacity={likeOpacity}
+                            dislikeOpacity={dislikeOpacity}
+                            key={lastVideo.id} />
+                    </Animated.View>: <View></View>}
             </PanGestureHandler>
         </View>
     }
