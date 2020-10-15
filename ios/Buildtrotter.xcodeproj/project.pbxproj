@@ -61,6 +61,7 @@
 		E05265D425333E1300B63D09 /* FontAwesome5_Brands.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = FontAwesome5_Brands.ttf; sourceTree = "<group>"; };
 		E05265D525333E1300B63D09 /* FontAwesome5_Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = FontAwesome5_Regular.ttf; sourceTree = "<group>"; };
 		E05265D625333E1300B63D09 /* FontAwesome.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = FontAwesome.ttf; sourceTree = "<group>"; };
+		E0689CFD2538B212004D07E2 /* MaterialCommunityIcons.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = MaterialCommunityIcons.ttf; sourceTree = "<group>"; };
 		E092C6412533407200396312 /* FontAwesome5_Solid.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = FontAwesome5_Solid.ttf; sourceTree = "<group>"; };
 		E0E369972506AF4000DC104A /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		EC7230DCB0C8D281F308E6E5 /* libPods-Buildtrotter-BuildtrotterTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Buildtrotter-BuildtrotterTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -196,6 +197,7 @@
 		E05265D325333E1300B63D09 /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
+				E0689CFD2538B212004D07E2 /* MaterialCommunityIcons.ttf */,
 				E05265D425333E1300B63D09 /* FontAwesome5_Brands.ttf */,
 				E05265D525333E1300B63D09 /* FontAwesome5_Regular.ttf */,
 				E05265D625333E1300B63D09 /* FontAwesome.ttf */,
