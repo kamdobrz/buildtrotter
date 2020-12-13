@@ -23,7 +23,7 @@ export class VideosService {
             .collection(this.DOCUMENT_PAIR_ID)
             .doc(this._pairID)
             .onSnapshot((doc: DocumentData): void => {
-                const ids = doc.data()?.ids;
+                const ids = doc?.data()?.ids;
 
                 if (!ids) {
                     return;
