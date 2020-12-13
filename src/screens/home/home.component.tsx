@@ -2,9 +2,8 @@ import React, {ReactElement} from 'react';
 import {SafeAreaView, View} from 'react-native';
 import Avatar from '../../components/avatar/avatar.component';
 import LoginComponent from '../../components/login/login.component';
-import {connect} from 'react-redux';
+import {connect, useSelector} from 'react-redux';
 import {AppState} from '../../store/configureStore';
-import {UserFirebase} from '../../_interfaces/user.interface';
 import {styles} from './home.styles';
 import VideoStack from '../video-stack/video-stack.component';
 import Navbar from '../../components/navbar/navbar.component'
@@ -43,22 +42,19 @@ const videos = [
             img: require('../../../assets/photo4.jpg')
     },
 ];
-const HomeScreen = ({user}: {user: UserFirebase}): ReactElement => {
+const HomeScreen = (): ReactElement => {
+    const user = useSelector(({user}: AppState) => user.user);
+
     return <React.Fragment>
         <SafeAreaView/>
         <View style={styles.container}>
-            {user?.email && <View style={styles.avatarWrapper}>
+            {user?.email ? <View style={styles.avatarWrapper}>
                 <Avatar user={user}/>
-            </View>}
-            {!user?.email && <LoginComponent/>}
+            </View> : <LoginComponent/>}
             <VideoStack videos={videos}/>
             <Navbar/>
         </View>
     </React.Fragment>;
 };
 
-const mapStateToProps = ({user}: AppState) => ({
-    user: user.user
-});
-
-export default connect(mapStateToProps)(HomeScreen);
+export default connect()(HomeScreen);
