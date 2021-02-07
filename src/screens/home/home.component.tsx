@@ -1,4 +1,4 @@
-import React, {ReactElement} from 'react';
+import React, {ReactElement, useEffect} from 'react';
 import {SafeAreaView, View} from 'react-native';
 import Avatar from '../../components/avatar/avatar.component';
 import LoginComponent from '../../components/login/login.component';
@@ -7,52 +7,27 @@ import {AppState} from '../../store/configureStore';
 import {styles} from './home.styles';
 import VideoStack from '../video-stack/video-stack.component';
 import Navbar from '../../components/navbar/navbar.component'
+import VideosService from '../../services/videos.service';
+import {MY_UUID} from '../../_mocks/uuids.mock';
+import {VIDEOS} from '../../_mocks/videos.mock';
 
-const videos = [
-    {
-        id: 1,
-        img: require('../../../assets/photo1.jpg')
-    },
-    {
-        id: 2,
-        img: require('../../../assets/photo2.jpg')
-    },
-    {
-        id: 3,
-            img: require('../../../assets/photo3.jpg')
-    },
-    {
-        id: 4,
-            img: require('../../../assets/photo4.jpg')
-    },
-    {
-        id: 5,
-        img: require('../../../assets/photo1.jpg')
-    },
-    {
-        id: 6,
-        img: require('../../../assets/photo2.jpg')
-    },
-    {
-        id: 7,
-            img: require('../../../assets/photo3.jpg')
-    },
-    {
-        id: 8,
-            img: require('../../../assets/photo4.jpg')
-    },
-];
 const HomeScreen = (): ReactElement => {
     const user = useSelector(({user}: AppState) => user.user);
+
+    useEffect((): void => {
+        // TODO: handle device UUID
+        VideosService.getInstance().myId = MY_UUID;
+        // TODO: handle videos from Firebase and pass it to VideoStack component
+    }, []);
 
     return <React.Fragment>
         <SafeAreaView/>
         <View style={styles.container}>
             {user?.email ? <View style={styles.avatarWrapper}>
                 <Avatar user={user}/>
-            </View> : <LoginComponent/>}
-            <VideoStack videos={videos}/>
-            <Navbar/>
+            </View> : <LoginComponent />}
+            <VideoStack videos={VIDEOS} />
+            <Navbar />
         </View>
     </React.Fragment>;
 };

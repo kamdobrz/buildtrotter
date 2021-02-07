@@ -1,3 +1,3 @@
-export interface VideosProps {
+export interface CommonVideosProps {
     ids: string[]
 }

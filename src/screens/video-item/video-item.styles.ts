@@ -6,13 +6,15 @@ export const styles = StyleSheet.create({
         left: 0,
         right: 0,
         width: '100%',
-        height: '100%'
+        height: '100%',
     },
     linearGradient: {
         position: 'absolute',
         top: 0,
         height: 150,
         width: '100%',
+        borderTopLeftRadius: 16,
+        borderTopRightRadius: 16,
         zIndex: 100
     },
     icon: {
@@ -28,6 +30,7 @@ export const styles = StyleSheet.create({
     },
     image: {
         width: '100%',
-        height: '100%'
+        height: '100%',
+        borderRadius: 16
     }
 });

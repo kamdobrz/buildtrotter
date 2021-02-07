@@ -25,7 +25,7 @@ const VideoItem = ({dislikeOpacity, id, img, likeOpacity}: VideoItemProps): Reac
         <Image
             key={id}
             source={img}
-        style={styles.image}/>
+            style={styles.image} />
     </View>;
 
 export default VideoItem;
