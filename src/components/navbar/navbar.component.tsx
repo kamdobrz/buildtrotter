@@ -45,7 +45,7 @@ const Navbar = ({state, descriptors, navigation}) => {
                         style={styles.item}
                         key={name}
                     >
-                        <Icon name={name} size={size} color={isFocused ? '#673ab7' : color}/>
+                        <Icon name={name} size={size} color={isFocused ? '#AE8799' : color}/>
                     </TouchableOpacity>
                 );
             })}

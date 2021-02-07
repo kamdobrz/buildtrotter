@@ -8,10 +8,12 @@ import {toRadians} from '../../helpers/radians';
 import VideoItem from '../video-item/video-item.component';
 import {styles} from './video-stack.styles';
 import {heightDimension, widthDimension} from '../../helpers/dimensions';
+import VideosService from '../../services/videos.service';
 
 const {add, and, call, clockRunning, cond, event, eq, greaterThan, Extrapolate, lessThan, multiply, neq, set, stopClock, Value} = Animated;
 
 class VideoStack extends Component<VideoStackProps, VideoStackState> {
+    private readonly videosService: VideosService = VideosService.getInstance();
     private translationX = new Value(0);
     private translationY = new Value(0);
     private translateX: AnimatedNode;
@@ -43,13 +45,15 @@ class VideoStack extends Component<VideoStackProps, VideoStackState> {
     }
 
     public onSwiped = ([x]: number[]): void => {
+        const {videos: [lastVideo, ...videos]} = this.state;
+        const {id} = lastVideo;
+
         if (x > 0) {
-            console.log('liked!')
+            this.videosService.like(id);
         } else {
-            console.log('disliked!')
+            this.videosService.dislike(id);
         }
 
-        const {videos: [lastVideo, ...videos]} = this.state;
         this.setState({videos}, this.init);
     };
 

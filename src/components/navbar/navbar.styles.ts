@@ -9,7 +9,7 @@ export const styles = StyleSheet.create({
         justifyContent: 'center',
         borderTopColor: 'grey',
         borderTopWidth: 1,
-        backgroundColor: 'white'
+        backgroundColor: '#865B6F'
     },
     item: {
         paddingHorizontal: 26
