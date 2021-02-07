@@ -1,4 +1,5 @@
 import {StyleSheet} from 'react-native';
+import {NAVBAR_BACKGROUND} from '../../const/colors.const';
 
 export const styles = StyleSheet.create({
     container: {
@@ -9,7 +10,7 @@ export const styles = StyleSheet.create({
         justifyContent: 'center',
         borderTopColor: 'grey',
         borderTopWidth: 1,
-        backgroundColor: '#865B6F'
+        backgroundColor: NAVBAR_BACKGROUND
     },
     item: {
         paddingHorizontal: 26

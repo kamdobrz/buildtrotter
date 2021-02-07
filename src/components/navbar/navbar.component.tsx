@@ -3,6 +3,7 @@ import {TouchableOpacity, View} from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import {styles} from './navbar.styles';
 import {NavbarItems} from '../../const/navbar-items.const';
+import {TAB_ICON_ACTIVE} from '../../const/colors.const';
 
 const Navbar = ({state, descriptors, navigation}) => {
     if (!state || descriptors[state?.routes[state.index].key].options.tabBarVisible === false) {
@@ -45,7 +46,7 @@ const Navbar = ({state, descriptors, navigation}) => {
                         style={styles.item}
                         key={name}
                     >
-                        <Icon name={name} size={size} color={isFocused ? '#AE8799' : color}/>
+                        <Icon name={name} size={size} color={isFocused ? TAB_ICON_ACTIVE : color}/>
                     </TouchableOpacity>
                 );
             })}

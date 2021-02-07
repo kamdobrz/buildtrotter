@@ -6,10 +6,9 @@ import {NavigationContainer} from '@react-navigation/native';
 import HomeScreen from './src/screens/home/home.component';
 import FavoritesScreen from './src/screens/favorites/favorites.component';
 import {StatusBar} from 'react-native';
-import {renderNavbar} from './src/helpers/navbar';
 import {createMaterialTopTabNavigator} from '@react-navigation/material-top-tabs';
 import CommonVideosScreen from './src/screens/videos/videos.component';
-import DefaultTheme from '@react-navigation/native/src/theming/DefaultTheme';
+import {NAVIGATION_THEME, NAVIGATOR_CONFIG} from './src/const/navigation-theme.const';
 
 const Tab = createMaterialTopTabNavigator();
 
@@ -23,23 +22,9 @@ export default class App extends Component {
         return (
             <Provider store={store}>
                 <StatusBar barStyle={'dark-content'}/>
-                    <NavigationContainer theme={
-                        {
-                            ...DefaultTheme,
-                            colors: {
-                                ...DefaultTheme.colors,
-                                background: '#C5AAB7'
-                            }
-                        }
-                    }>
+                    <NavigationContainer theme={NAVIGATION_THEME}>
                         <Tab.Navigator
-                            initialRouteName={'Home'}
-                            swipeEnabled={false}
-                            tabBar={renderNavbar}
-                            tabBarPosition={'bottom'}
-                            timingConfig={{
-                                duration: 400
-                            }}>
+                            {...NAVIGATOR_CONFIG}>
                             <Tab.Screen name={'Home'} component={HomeScreen} />
                             <Tab.Screen name={'Favorites'} component={FavoritesScreen} />
                             <Tab.Screen name={'CommonFavorites'} component={CommonVideosScreen} />

@@ -5,11 +5,7 @@ import LinearGradient from 'react-native-linear-gradient';
 import Animated from 'react-native-reanimated';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import {VideoItemProps} from './video-item.interface';
-
-const LIKE_COLOR = '#0a940a';
-const DISLIKE_COLOR = '#b11010';
-const COLOR_START = 'rgba(0, 0, 0, 0.8)';
-const COLOR_END = 'rgba(0, 0, 0, 0)';
+import {COLOR_END, COLOR_START, DISLIKE_COLOR, LIKE_COLOR} from '../../const/colors.const';
 
 const VideoItem = ({dislikeOpacity, id, img, likeOpacity}: VideoItemProps): ReactElement =>
     <View style={styles.item}>
