@@ -13,15 +13,23 @@ const COLOR_END = 'rgba(0, 0, 0, 0)';
 
 const VideoItem = ({dislikeOpacity, id, img, likeOpacity}: VideoItemProps): ReactElement =>
     <View style={styles.item}>
-        {likeOpacity && <Animated.View style={[styles.icon, styles.leftIcon, likeOpacity]}>
-            <Icon name="heart" size={70} color={LIKE_COLOR} />
+        {likeOpacity && <Animated.View
+            style={[styles.icon, styles.leftIcon, likeOpacity]}>
+            <Icon
+                name='heart'
+                size={70}
+                color={LIKE_COLOR} />
         </Animated.View>}
-        {dislikeOpacity && <Animated.View style={[styles.icon, styles.rightIcon, dislikeOpacity]}>
-            <Icon name="close" size={70} color={DISLIKE_COLOR} />
+        {dislikeOpacity && <Animated.View
+            style={[styles.icon, styles.rightIcon, dislikeOpacity]}>
+            <Icon
+                name='close'
+                size={70}
+                color={DISLIKE_COLOR} />
         </Animated.View>}
         <LinearGradient
             colors={[COLOR_START, COLOR_END]}
-            style={styles.linearGradient} ></LinearGradient>
+            style={styles.linearGradient}  />
         <Image
             key={id}
             source={img}

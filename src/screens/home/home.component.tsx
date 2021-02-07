@@ -6,13 +6,13 @@ import {connect, useSelector} from 'react-redux';
 import {AppState} from '../../store/configureStore';
 import {styles} from './home.styles';
 import VideoStack from '../video-stack/video-stack.component';
-import Navbar from '../../components/navbar/navbar.component'
+import Navbar from '../../components/navbar/navbar.component';
 import VideosService from '../../services/videos.service';
 import {MY_UUID} from '../../_mocks/uuids.mock';
 import {VIDEOS} from '../../_mocks/videos.mock';
 
 const HomeScreen = (): ReactElement => {
-    const user = useSelector(({user}: AppState) => user.user);
+    const firebaseUser = useSelector(({user}: AppState) => user.user);
 
     useEffect((): void => {
         // TODO: handle device UUID
@@ -23,8 +23,8 @@ const HomeScreen = (): ReactElement => {
     return <React.Fragment>
         <SafeAreaView/>
         <View style={styles.container}>
-            {user?.email ? <View style={styles.avatarWrapper}>
-                <Avatar user={user}/>
+            {firebaseUser?.email ? <View style={styles.avatarWrapper}>
+                <Avatar user={firebaseUser}/>
             </View> : <LoginComponent />}
             <VideoStack videos={VIDEOS} />
             <Navbar />

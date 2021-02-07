@@ -28,7 +28,7 @@ class VideoStack extends Component<VideoStackProps, VideoStackState> {
             translationY: this.translationY,
             velocityX: this.velocityX,
             state: this.gestureState
-        } }], {
+        }}], {
         useNativeDriver: true
     });
     private readonly height = heightDimension();
@@ -91,7 +91,7 @@ class VideoStack extends Component<VideoStackProps, VideoStackState> {
                 set(translationX, springAnimation(clockX, translationX, snapPoint)),
                 set(offsetX, translationX),
                 cond(and(eq(clockRunning(clockX), 0), neq(translationX, 0)), [
-                    call([translationX], this.onSwiped),
+                    call([translationX], this.onSwiped)
                 ]),
                 translationX
             ],
@@ -116,11 +116,11 @@ class VideoStack extends Component<VideoStackProps, VideoStackState> {
         };
         const likeOpacity = {opacity: interpolate(translateX, {
             inputRange: [0, width / 4],
-            outputRange: [0, 1],
+            outputRange: [0, 1]
         })};
         const dislikeOpacity = {opacity: interpolate(translateX, {
             inputRange: [-width / 4, 0],
-            outputRange: [1, 0],
+            outputRange: [1, 0]
         })};
 
         return <View style={styles.container}>
@@ -138,9 +138,9 @@ class VideoStack extends Component<VideoStackProps, VideoStackState> {
                             likeOpacity={likeOpacity}
                             dislikeOpacity={dislikeOpacity}
                             key={lastVideo.id} />
-                    </Animated.View>: <View></View>}
+                    </Animated.View> : <View />}
             </PanGestureHandler>
-        </View>
+        </View>;
     }
 }
 

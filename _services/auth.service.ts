@@ -11,7 +11,7 @@ export class AuthService {
     public static async signInAnonymously(): Promise<void> {
         try {
             auth().signInAnonymously();
-        } catch(e) {
+        } catch (e) {
             if (e.code === 'auth/operation-not-allowed') {
                 // TODO
             }
@@ -33,7 +33,7 @@ export class AuthService {
     public static async createUser(): Promise<void> {
         try {
             await auth().createUserWithEmailAndPassword('kamil.dobrzynski@neoteric.eu', 'SuperSecretPassword!');
-        } catch(e) {
+        } catch (e) {
             if (e.code === 'auth/email-already-in-use') {
                 // TODO
             }
@@ -51,7 +51,7 @@ export class AuthService {
         };
 
     public static resetPassword = (email: string): () => void =>
-        async (): Promise<void> =>{
+        async (): Promise<void> => {
         try {
             auth().sendPasswordResetEmail(email);
         } catch (e) {

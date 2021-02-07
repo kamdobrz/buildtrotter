@@ -15,15 +15,15 @@ class CommonVideosScreen extends Component<CommonVideosProps> {
         this.videoService.eventEmitter.addListener<string[]>(
             VideoEventsEmitterEnum.DOCUMENT_PAIR_ID_SNAPHOT,
             this.setVideoIds
-        )
+        );
     }
 
     private readonly setVideoIds = (ids: string[]): void => {
-        this.setState({ids})
+        this.setState({ids});
     };
 
     public componentWillUnmount(): void {
-        this.videoService.eventEmitter.removeListener(this.setVideoIds)
+        this.videoService.eventEmitter.removeListener(this.setVideoIds);
     }
 
     public setPairDocument = async(): Promise<void> => {
@@ -55,6 +55,6 @@ class CommonVideosScreen extends Component<CommonVideosProps> {
             </ScrollView>
         </SafeAreaView>;
     }
-};
+}
 
 export default CommonVideosScreen;

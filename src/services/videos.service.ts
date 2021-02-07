@@ -43,7 +43,7 @@ class VideosService {
                     VideoEventsEmitterEnum.DOCUMENT_PAIR_ID_SNAPHOT,
                     this._videoIds
                 );
-            })
+            });
     };
 
     get videoIds (): string[] {
@@ -76,7 +76,7 @@ class VideosService {
             .doc(this._pairID)
             .set({
                 ids: firestore.FieldValue.arrayUnion(id)
-            }, {merge: true})
+            }, {merge: true});
     };
 
     public like = async(id: string): Promise<void> => {
@@ -85,7 +85,7 @@ class VideosService {
             .doc(this._myID)
             .set({
                 ids: firestore.FieldValue.arrayUnion(id)
-            }, {merge: true})
+            }, {merge: true});
     };
 
     public dislike = async(id: string): Promise<void> => {
@@ -94,7 +94,7 @@ class VideosService {
             .doc(this._myID)
             .set({
                 ids: firestore.FieldValue.arrayUnion(id)
-            }, {merge: true})
+            }, {merge: true});
     }
 }
 

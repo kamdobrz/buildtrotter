@@ -20,7 +20,7 @@ const Navbar = ({state, descriptors, navigation}) => {
                     const event = navigation.emit({
                         type: 'tabPress',
                         target: route.key,
-                        canPreventDefault: true,
+                        canPreventDefault: true
                     });
 
                     if (!isFocused && !event.defaultPrevented) {

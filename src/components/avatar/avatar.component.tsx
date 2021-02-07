@@ -19,7 +19,7 @@ const logOut = (displayName: string | null): () => void =>
             }
 
             if (buttonIndex === 1) {
-                Alert.alert('TODO')
+                Alert.alert('TODO');
             }
         }
     );
@@ -28,15 +28,15 @@ const logOut = (displayName: string | null): () => void =>
 const Avatar = ({user}: AvatarProps): ReactElement => {
     const {photoURL} = user;
     return <TouchableOpacity
-        activeOpacity={.5}
+        activeOpacity={0.5}
         onPress={logOut(user?.displayName)}>
         {photoURL ?
             <Image style={styles.image} source={{uri: photoURL}}/> :
             <View style={styles.textWrapper}>
-                <Text style={{color: 'white'}}>ME</Text>
+                <Text style={styles.text}>ME</Text>
             </View>
         }
-    </TouchableOpacity>
+    </TouchableOpacity>;
 };
 
-export default Avatar
+export default Avatar;

@@ -30,5 +30,5 @@ export const VIDEOS = [
     {
         id: 8,
         img: require('../../assets/photo4.jpg')
-    },
+    }
 ];

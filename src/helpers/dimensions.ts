@@ -1,4 +1,4 @@
-import {Dimensions, ScaledSize} from 'react-native';
+import {Dimensions} from 'react-native';
 
 export const heightDimension = (): number =>
     Dimensions.get('window').height;

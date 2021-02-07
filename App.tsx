@@ -16,7 +16,7 @@ const Tab = createMaterialTopTabNavigator();
 export default class App extends Component {
     public constructor(props) {
         super(props);
-        appSetup()
+        appSetup();
     }
 
     public render(): ReactElement {

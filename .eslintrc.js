@@ -17,6 +17,7 @@ module.exports = {
       "error",
       "always"
     ],
+    'prettier/prettier': 0,
     "react/display-name": 0,
     "no-extra-parens": "error",
     "no-unexpected-multiline": "error",
