@@ -1,4 +1,4 @@
-import {GoogleSignin} from '@react-native-community/google-signin';
+import {GoogleSignin} from '@react-native-google-signin/google-signin';
 import auth, {FirebaseAuthTypes} from '@react-native-firebase/auth';
 import {UserFirebase} from '../src/_interfaces/user.interface';
 
